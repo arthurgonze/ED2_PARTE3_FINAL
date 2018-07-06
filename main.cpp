@@ -20,7 +20,7 @@ int main()
     double tempoLZW = 0;
     clock_t fim, start;
 
-    for (i; i < 3; i++)
+    for (i; i < 6; i++)
     {
 
         string *vetorQuestoes = controleDeArquivo.vetorDeBodys(tam[i]);
@@ -111,7 +111,7 @@ int main()
         for (int j = 0; j < tam[i]; j++)
         {
             vetorCompressoes[j] = lz78->compressao(vetorQuestoes[j]);
-            cout<<"LZ78: " << vetorCompressoes[j] <<endl;
+            //cout<<"LZ78: " << vetorCompressoes[j] <<endl;
         }
         fim = clock();
         tempoLZ78 = 1000*(fim - start)/(CLOCKS_PER_SEC);

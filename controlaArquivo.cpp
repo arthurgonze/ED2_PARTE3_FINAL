@@ -185,7 +185,7 @@ string *controlaArquivo::vetorDeBodys(int numQuestoes)
 void controlaArquivo::imprimeSaida(string nome, int tamanho, double tempoGasto)
 {
     fstream saida;
-    saida.open("saida.txt");
+    saida.open("saida.txt", std::ofstream::out | ios::app);
     if (saida.is_open())
     {
         saida.seekg(0, saida.end);
