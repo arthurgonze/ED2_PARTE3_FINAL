@@ -2,6 +2,7 @@
 #include <vector>
 #include <sstream>
 #include "LZ78.h"
+#include <list>
 
 using namespace std;
 
@@ -119,7 +120,7 @@ vector<string> cisao(string str, char delimitador)
 LZ78::LZ78() = default;
 LZ78::~LZ78() = default;
 
-std::string LZ78::compressao(std::string entrada)
+list<DuplaLZ78> LZ78::compressao(std::string entrada)
 {
     NoLZ78 *dicionario = new NoLZ78;
     string palavra, resultado;
@@ -129,6 +130,8 @@ std::string LZ78::compressao(std::string entrada)
     palavra = entrada[0];
     st_NoLZ78(dicionario, 1, palavra);
     resultado += "0," + palavra;
+
+    list<DuplaLZ78> lista;
 
     for (int i = 1; i < comprimento; i++)
     {
@@ -159,11 +162,19 @@ std::string LZ78::compressao(std::string entrada)
 
             if ((int) dados.length() < 2)
             {
-                resultado += " (" + to_string(0) + "," + zero + ")";
+                DuplaLZ78 duplaAux;
+                duplaAux.num = 0;
+                duplaAux.chave = zero;
+                lista.push_back(duplaAux);
+                //resultado += " (" + to_string(0) + "," + zero + ")";
             }
             else
             {
-                resultado += " (" + to_string(ultimoVisto) + "," + zero+")";
+                DuplaLZ78 duplaAux;
+                duplaAux.chave = zero;
+                duplaAux.num = ultimoVisto;
+                lista.push_back(duplaAux);
+                //resultado += " (" + to_string(ultimoVisto) + "," + zero+")";
             }
 
             indice++;
@@ -174,7 +185,7 @@ std::string LZ78::compressao(std::string entrada)
         }
     }
 
-    return resultado;
+    return lista;
 }
 std::string LZ78::descompressao(std::string entrada)
 {

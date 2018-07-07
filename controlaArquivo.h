@@ -14,6 +14,7 @@ public:
     string *vetorDeBodys(int numQuestoes);
     void imprimeBodys(string *vetorDeBodys, int tamanho, string nomeDoArquivo);
     void imprimeBodysBinarios(string *vetorDeBodys, int tamanho, string nomeDoArquivo);
+    void imprimeBodys(string *vetorDeBodys, int tamanho, string nomeDoArquivo, int tamDoArquivoEmBits);
 protected:
 private:
     int converteEmNumero(string texto);

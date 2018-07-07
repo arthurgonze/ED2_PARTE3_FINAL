@@ -218,6 +218,27 @@ void controlaArquivo::imprimeBodys(string *vetorDeBodys, int tamanho, string nom
         cout << "Não consegui abrir o arquivo " << nomeDoArquivo;
 }
 
+void controlaArquivo::imprimeBodys(string *vetorDeBodys, int tamanho, string nomeDoArquivo, int tamDoArquivoEmBits)
+{
+    nomeDoArquivo += ".txt";
+    fstream arquivo;
+    arquivo.open(nomeDoArquivo, std::ofstream::out | std::ofstream::trunc);
+    if (arquivo.is_open())
+    {
+        arquivo<<"Tamanho real do arquivo: "<<tamDoArquivoEmBits<<endl;
+        arquivo << "Compressão de body de " << tamanho << " questões:" << endl;
+        int i = 0;
+        while (i < tamanho)
+        {
+            arquivo << vetorDeBodys[i] << endl;
+            i++;
+        }
+        arquivo.close();
+    }
+    else
+        cout << "Não consegui abrir o arquivo " << nomeDoArquivo;
+}
+
 void controlaArquivo::imprimeBodysBinarios(string *vetorDeBodys, int tamanho, string nomeDoArquivo)
 {
     nomeDoArquivo += ".bin";
