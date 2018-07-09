@@ -182,7 +182,7 @@ string *controlaArquivo::vetorDeBodys(int numQuestoes)
     return bodys;
 }
 
-void controlaArquivo::imprimeSaida(string nome, int tamanho, double tempoGasto)
+void controlaArquivo::imprimeSaida(string nome, int tamanho, double tempoGasto, long long unsigned tamanhoDoArquivoEmBytes)
 {
     fstream saida;
     saida.open("saida.txt", std::ofstream::out | ios::app);
@@ -191,7 +191,7 @@ void controlaArquivo::imprimeSaida(string nome, int tamanho, double tempoGasto)
         saida.seekg(0, saida.end);
         int lugar = saida.tellg();
         saida.seekp(lugar);
-        saida << nome << " comprimiu " << tamanho << " strings em " << tempoGasto << " milisegundos." << endl;
+        saida << nome << " comprimiu " << tamanho << " strings em " << tempoGasto << " milisegundos e tamanho do arquivo em byutes = "<<tamanhoDoArquivoEmBytes <<" "<< endl;
         saida.close();
     }
     else

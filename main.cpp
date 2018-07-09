@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
     int tam[6] = {1000, 5000, 10000, 50000, 100000, 500000};
-    string descricao[6] = {"1k", "5k", "10k", "50k", "100k", "500k"};
+    string descricao[6] = {"1", "5k", "10k", "50k", "100k", "500k"};
     int i = 0; //posição em tam
     controlaArquivo controleDeArquivo;
 
@@ -25,7 +25,6 @@ int main()
         cout<<"teste"<<endl;
         string *vetorQuestoes = controleDeArquivo.vetorDeBodys(tam[i]);
         string *vetorCompressoes = new string[tam[i]];
-        string *vetorCompressoesBinarias= new string[tam[i]];
 
 
         /************
@@ -63,7 +62,7 @@ int main()
         nomeDoArquivo = "huffman" + descricao[i];
         cout << "Imprimindo bodys em " + nomeDoArquivo << endl;
         controleDeArquivo.imprimeBodys(vetorCompressoes, tam[i], nomeDoArquivo,tamDoArquivoEmBytesHuffman);
-
+        controleDeArquivo.imprimeSaida("Huffman", tam[i], tempoHuffman,tamDoArquivoEmBytesHuffman);
 
         /*******
         * LZ77 *
@@ -104,7 +103,7 @@ int main()
         nomeDoArquivo = "LZ77" + descricao[i];
         cout << "Imprimindo bodys em " + nomeDoArquivo << endl;
         controleDeArquivo.imprimeBodys(vetorCompressoes, tam[i], nomeDoArquivo,tamDoArquivoEmBytesLZ77);
-
+        controleDeArquivo.imprimeSaida("LZ77", tam[i], tempoLZ77,tamDoArquivoEmBytesLZ77);
         /*******
         * LZ78 *
         *******/
@@ -140,6 +139,7 @@ int main()
         nomeDoArquivo = "LZ78" + descricao[i];
         cout << "Imprimindo bodys em " + nomeDoArquivo << endl;
         controleDeArquivo.imprimeBodys(vetorCompressoes, tam[i], nomeDoArquivo,tamDoArquivoEmBytesLZ78);
+        controleDeArquivo.imprimeSaida("LZ78", tam[i], tempoLZ78,tamDoArquivoEmBytesLZ78);
 
         /******
         * LZW *
@@ -177,14 +177,11 @@ int main()
         cout << "Imprimindo bodys em " + nomeDoArquivo << endl;
         controleDeArquivo.imprimeBodys(vetorCompressoes, tam[i], nomeDoArquivo,tamanhoEmBytesDaLZW);
 
-        //delete vetorQuestoes;
-        //delete vetorCompressoes;
+        delete [] vetorQuestoes;
+        delete [] vetorCompressoes;
 
         //imprimir arquivo "saida.txt" com as estatísticas de tempo
-        controleDeArquivo.imprimeSaida("Huffman", tam[i], tempoHuffman);
-        controleDeArquivo.imprimeSaida("LZ77", tam[i], tempoLZ77);
-        controleDeArquivo.imprimeSaida("LZ78", tam[i], tempoLZ78);
-        controleDeArquivo.imprimeSaida("LZW", tam[i], tempoLZW);
+        controleDeArquivo.imprimeSaida("LZW", tam[i], tempoLZW,tamanhoEmBytesDaLZW);
 
     }
 
