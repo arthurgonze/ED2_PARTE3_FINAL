@@ -182,7 +182,7 @@ string *controlaArquivo::vetorDeBodys(int numQuestoes)
     return bodys;
 }
 
-void controlaArquivo::imprimeSaida(string nome, int tamanho, double tempoGasto, long long unsigned tamanhoDoArquivoEmBytes)
+void controlaArquivo::imprimeSaida(string nome, int tamanho, long double tempoGasto, long long unsigned tamanhoDoArquivoEmBytes)
 {
     fstream saida;
     saida.open("saida.txt", std::ofstream::out | ios::app);

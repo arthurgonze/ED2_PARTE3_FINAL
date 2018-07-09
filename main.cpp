@@ -14,10 +14,10 @@ int main()
     int i = 0; //posição em tam
     controlaArquivo controleDeArquivo;
 
-    double tempoHuffman = 0;
-    double tempoLZ77 = 0;
-    double tempoLZ78 = 0;
-    double tempoLZW = 0;
+    long double tempoHuffman = 0;
+    long double tempoLZ77 = 0;
+    long double tempoLZ78 = 0;
+    long double tempoLZW = 0;
     clock_t fim, start;
 
     for (i; i < 6; i++)
